@@ -1,0 +1,13 @@
+# This is a simple .gitignore that will ignore everything
+# except this file, cpp and h files, README.md file, and essay.md file
+
+#ignore everything
+*
+*/
+
+#unignore
+!README.md
+!essay.md
+!.gitignore
+!*.h
+!*.cpp
