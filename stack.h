@@ -7,6 +7,8 @@
  #ifndef CLASSES_STACK_H
  #define CLASSES_STACK_H 
  
+ #define STACKSIZE 10
+ 
  class Stack {
  
     public:
