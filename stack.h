@@ -15,7 +15,8 @@
     /**********************
     Constructors/Destructor
     ***********************/
-    
+    Stack();
+    ~Stack();
 
     /**********************
     Getters/Accessors
