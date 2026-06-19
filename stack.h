@@ -44,7 +44,7 @@ protected: // we use protected here to allow access to derived classes
     /**********************
     Attributes
     ***********************/
-    int array;
+    int array[STACKSIZE];
     int top;
     
 };
