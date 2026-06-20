@@ -148,7 +148,8 @@
     }
     result = stack.push(9999);
     std::cout << (result ? "true" : "false") << " - "
-              << (result ? "PASS" : "FAIL") << std::endl;
+              //!result because false is a PASS in this case
+              << (!result ? "PASS" : "FAIL") << std::endl;
 
     // ------------------------------------------------
     // BOUNDARY TESTING
@@ -190,4 +191,62 @@
         std::cout << "PASS - " << e.what() << std::endl;
     }
 
+    // ------------------------------------------------
+    // RANDOM TESTING
+    // STACKSIZE * 100 random operations across all
+    // four methods. Count outcomes to verify coverage.
+    // ------------------------------------------------
+    int totalOps = STACKSIZE * 100;
+    std::cout << "\n--- Random Tests (" << totalOps
+              << " operations) ---" << std::endl;
+
+    srand(time(0));
+    stack = Stack();
+
+    int pushCount    = 0;
+    int popCount     = 0;
+    int peekCount    = 0;
+    int isEmptyCount = 0;
+    int overflows    = 0;
+    int underflows   = 0;
+
+    for (int i = 0; i < totalOps; i++) {
+        int op = rand() % 4;
+        if (op == 0) {
+            result = stack.push(rand() % 1000);
+            pushCount++;
+            if (!result) {
+                overflows++;
+            }
+        } else if (op == 1) {
+            try {
+                value = stack.pop();
+                popCount++;
+            } catch (std::underflow_error& e) {
+                underflows++;
+            }
+        } else if (op == 2) {
+            try {
+                value = stack.peek();
+                peekCount++;
+            } catch (std::underflow_error& e) {
+                underflows++;
+            }
+        } else {
+            stack.isEmpty();
+            isEmptyCount++;
+        }
+    }
+
+    std::cout << "  Pushes:            " << pushCount
+              << " (overflows: " << overflows << ")" << std::endl;
+    std::cout << "  Successful pops:   " << popCount << std::endl;
+    std::cout << "  Successful peeks:  " << peekCount << std::endl;
+    std::cout << "  isEmpty calls:     " << isEmptyCount << std::endl;
+    std::cout << "  Underflows caught: " << underflows << std::endl;
+    std::cout << "Random testing complete." << std::endl;
+
+    std::cout << "\n=== All Tests Complete ===" << std::endl;
+
+    return 0;
 }
