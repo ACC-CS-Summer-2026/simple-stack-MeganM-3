@@ -90,3 +90,15 @@ bool Stack::push(int value) {
     }
     return success;
 }
+
+bool Stack::isEmpty() {
+    /* ************************************
+    * Tests whether the stack contains no elements.
+    *
+    * @param na : na
+    * @return (bool) : true if empty, false otherwise
+    * @exception na : na
+    * @note na
+    * ************************************/
+    return (top < 0);
+}
