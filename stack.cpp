@@ -56,3 +56,17 @@ int Stack::pop() {
     return value;
 }
 
+int Stack::peek() {
+    /* ************************************
+    * Returns the top value without removing it.
+    *
+    * @param na : na
+    * @return (int) : value at top of stack
+    * @exception std::underflow_error : thrown if stack is empty
+    * @note na
+    * ************************************/
+    if (top < 0) {
+        throw std::underflow_error("peek on empty stack");
+    }
+    return array[top];
+}
