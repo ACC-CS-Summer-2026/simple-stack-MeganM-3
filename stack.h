@@ -9,6 +9,8 @@
  
  #define STACKSIZE 10
  
+ #include <stdexcept>
+ 
  class Stack {
  
     public:
