@@ -102,4 +102,46 @@
     std::cout << "push(999) on normal (expect true): ";
     result = stack.push(999);
     std::cout << (result ? "PASS" : "FAIL") << std::endl;
+    
+    // ---- State 3: Full stack ----
+    stack = Stack();
+    for (int i = 0; i < STACKSIZE; i++) {
+        stack.push(i);
+    }
+
+    std::cout << "\n[State: Full]" << std::endl;
+
+    std::cout << "isEmpty (expect false): "
+              << (!stack.isEmpty() ? "PASS" : "FAIL") << std::endl;
+
+    std::cout << "peek (expect "
+              << (STACKSIZE - 1) << "): ";
+    try {
+        value = stack.peek();
+        std::cout << value << " - "
+                  << (value == (STACKSIZE - 1) ? "PASS" : "FAIL")
+                  << std::endl;
+    } catch (std::underflow_error& e) {
+        std::cout << "FAIL - " << e.what() << std::endl;
+    }
+
+    std::cout << "pop (expect "
+              << (STACKSIZE - 1) << "): ";
+    try {
+        value = stack.pop();
+        std::cout << value << " - "
+                  << (value == (STACKSIZE - 1) ? "PASS" : "FAIL")
+                  << std::endl;
+    } catch (std::underflow_error& e) {
+        std::cout << "FAIL - " << e.what() << std::endl;
+    }
+
+    std::cout << "push on full (expect false/overflow): ";
+    stack = Stack();
+    for (int i = 0; i < STACKSIZE; i++) {
+        stack.push(i);
+    }
+    result = stack.push(9999);
+    std::cout << (!result ? "PASS" : "FAIL") << std::endl;
+
 }
