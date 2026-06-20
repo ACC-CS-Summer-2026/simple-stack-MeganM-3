@@ -37,3 +37,22 @@ Stack::~Stack() {
     * ************************************/
 }
 
+int Stack::pop() {
+    /* ************************************
+    * Removes and returns the top value. Resets
+    * the vacated slot to 0.
+    *
+    * @param na : na
+    * @return (int) : value removed from top
+    * @exception std::underflow_error : thrown if stack is empty
+    * @note na
+    * ************************************/
+    if (top < 0) {
+        throw std::underflow_error("pop on empty stack");
+    }
+    int value = array[top];
+    array[top] = 0;
+    top--;
+    return value;
+}
+
