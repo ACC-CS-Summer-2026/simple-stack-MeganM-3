@@ -1,7 +1,8 @@
 /* *************************************************
  * Name: Megan Triesch
  * Assignment: Assignment 4
- * Purpose: Create and define 'stack' data structure class.
+ * Purpose: Create and define 'stack' data structure 
+ * class.
  ************************************************* */
  
  #ifndef CLASSES_STACK_H
