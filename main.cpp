@@ -43,6 +43,7 @@
     std::cout << "\n[State: Empty]" << std::endl;
 
     std::cout << "isEmpty (expect true): "
+              << (stack.isEmpty() ? "true" : "false") << " - "
               << (stack.isEmpty() ? "PASS" : "FAIL") << std::endl;
 
     std::cout << "peek on empty (expect underflow_error): ";
@@ -63,7 +64,8 @@
 
     std::cout << "push(10) on empty (expect true): ";
     result = stack.push(10);
-    std::cout << (result ? "PASS" : "FAIL") << std::endl;
+    std::cout << (result ? "true" : "false") << " - "
+              << (result ? "PASS" : "FAIL") << std::endl;
     
     // ---- State 2: Normal stack (partially filled) ----
     // Reset, then push half-capacity items
@@ -75,6 +77,7 @@
     std::cout << "\n[State: Normal]" << std::endl;
 
     std::cout << "isEmpty (expect false): "
+              << (stack.isEmpty() ? "true" : "false") << " - "
               << (!stack.isEmpty() ? "PASS" : "FAIL") << std::endl;
 
     std::cout << "peek (expect "
@@ -101,7 +104,8 @@
 
     std::cout << "push(999) on normal (expect true): ";
     result = stack.push(999);
-    std::cout << (result ? "PASS" : "FAIL") << std::endl;
+    std::cout << (result ? "true" : "false") << " - "
+              << (result ? "PASS" : "FAIL") << std::endl;
     
     // ---- State 3: Full stack ----
     stack = Stack();
@@ -112,6 +116,7 @@
     std::cout << "\n[State: Full]" << std::endl;
 
     std::cout << "isEmpty (expect false): "
+              << (stack.isEmpty() ? "true" : "false") << " - "
               << (!stack.isEmpty() ? "PASS" : "FAIL") << std::endl;
 
     std::cout << "peek (expect "
@@ -142,6 +147,7 @@
         stack.push(i);
     }
     result = stack.push(9999);
-    std::cout << (!result ? "PASS" : "FAIL") << std::endl;
+    std::cout << (result ? "true" : "false") << " - "
+              << (result ? "PASS" : "FAIL") << std::endl;
 
 }
