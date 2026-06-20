@@ -70,3 +70,23 @@ int Stack::peek() {
     }
     return array[top];
 }
+
+bool Stack::push(int value) {
+    /* ************************************
+    * Inserts a value at the top of the stack.
+    * Returns false without modifying the stack
+    * if it is already full.
+    *
+    * @param value (int) : integer to push
+    * @return (bool) : true if successful, false on overflow
+    * @exception na : na
+    * @note na
+    * ************************************/
+    bool success = false;
+    if (top < STACKSIZE - 1) {
+        top++;
+        array[top] = value;
+        success = true;
+    }
+    return success;
+}
