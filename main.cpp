@@ -64,4 +64,42 @@
     std::cout << "push(10) on empty (expect true): ";
     result = stack.push(10);
     std::cout << (result ? "PASS" : "FAIL") << std::endl;
+    
+    // ---- State 2: Normal stack (partially filled) ----
+    // Reset, then push half-capacity items
+    stack = Stack();
+    for (int i = 0; i < STACKSIZE / 2; i++) {
+        stack.push(i);
+    }
+
+    std::cout << "\n[State: Normal]" << std::endl;
+
+    std::cout << "isEmpty (expect false): "
+              << (!stack.isEmpty() ? "PASS" : "FAIL") << std::endl;
+
+    std::cout << "peek (expect "
+              << (STACKSIZE / 2 - 1) << "): ";
+    try {
+        value = stack.peek();
+        std::cout << value << " - "
+                  << (value == (STACKSIZE / 2 - 1) ? "PASS" : "FAIL")
+                  << std::endl;
+    } catch (std::underflow_error& e) {
+        std::cout << "FAIL - " << e.what() << std::endl;
+    }
+
+    std::cout << "pop (expect "
+              << (STACKSIZE / 2 - 1) << "): ";
+    try {
+        value = stack.pop();
+        std::cout << value << " - "
+                  << (value == (STACKSIZE / 2 - 1) ? "PASS" : "FAIL")
+                  << std::endl;
+    } catch (std::underflow_error& e) {
+        std::cout << "FAIL - " << e.what() << std::endl;
+    }
+
+    std::cout << "push(999) on normal (expect true): ";
+    result = stack.push(999);
+    std::cout << (result ? "PASS" : "FAIL") << std::endl;
 }
