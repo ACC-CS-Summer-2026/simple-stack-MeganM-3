@@ -30,14 +30,14 @@
     std::cout << std::endl;
     
     // ------------------------------------------------
-    // TESTING
+    // EXPLICIT TESTING
     // Every operation tested in every possible state:
     //   State 1 - Empty (underflow)
     //   State 2 - Normal (between empty and full)
     //   State 3 - Full (overflow)
     // ------------------------------------------------
     
-    std::cout << "--- Tests ---" << std::endl;
+    std::cout << "--- Explicit Tests ---" << std::endl;
     
     // ---- State 1: Empty stack ----
     std::cout << "\n[State: Empty]" << std::endl;
@@ -149,5 +149,4 @@
     result = stack.push(9999);
     std::cout << (result ? "true" : "false") << " - "
               << (result ? "PASS" : "FAIL") << std::endl;
-
 }
