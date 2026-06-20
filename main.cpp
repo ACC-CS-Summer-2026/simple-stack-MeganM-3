@@ -149,4 +149,45 @@
     result = stack.push(9999);
     std::cout << (result ? "true" : "false") << " - "
               << (result ? "PASS" : "FAIL") << std::endl;
+
+    // ------------------------------------------------
+    // BOUNDARY TESTING
+    // Push exactly to capacity, then one more.
+    // Pop down to empty, then one more.
+    // ------------------------------------------------
+    std::cout << "\n--- Boundary Tests ---" << std::endl;
+
+    stack = Stack();
+    std::cout << "Push to full (" << STACKSIZE << " items):" << std::endl;
+    for (int i = 0; i < STACKSIZE; i++) {
+        result = stack.push(i);
+        std::cout << "  push(" << i << "): "
+                  << (result ? "PASS" : "FAIL") << std::endl;
+    }
+
+    std::cout << "Push beyond STACKSIZE (expect false): ";
+    result = stack.push(9999);
+    std::cout << (result ? "true" : "false") << " - "
+              //!result because false is a PASS in this case
+              << (!result ? "PASS" : "FAIL") << std::endl;
+
+    std::cout << "Pop to empty (" << STACKSIZE << " pops):" << std::endl;
+    for (int i = STACKSIZE - 1; i >= 0; i--) {
+        try {
+            value = stack.pop();
+            std::cout << "  pop (expect " << i << "): " << value
+                      << (value == i ? " PASS" : " FAIL") << std::endl;
+        } catch (std::underflow_error& e) {
+            std::cout << "  FAIL - " << e.what() << std::endl;
+        }
+    }
+
+    std::cout << "Pop beyond empty (expect underflow_error): ";
+    try {
+        value = stack.pop();
+        std::cout << "FAIL - no exception" << std::endl;
+    } catch (std::underflow_error& e) {
+        std::cout << "PASS - " << e.what() << std::endl;
+    }
+
 }
