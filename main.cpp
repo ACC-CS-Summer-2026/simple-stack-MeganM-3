@@ -196,7 +196,7 @@
     // STACKSIZE * 100 random operations across all
     // four methods. Count outcomes to verify coverage.
     // ------------------------------------------------
-    int totalOps = STACKSIZE * 100;
+    int totalOps = STACKSIZE * RANDOM_TEST_MULTIPLIER;
     std::cout << "\n--- Random Tests (" << totalOps
               << " operations) ---" << std::endl;
 
