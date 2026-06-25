@@ -9,6 +9,7 @@
  #define CLASSES_STACK_H 
  
  #define STACKSIZE 10
+ #define RANDOM_TEST_MULTIPLIER 100
  
  #include <stdexcept>
  
